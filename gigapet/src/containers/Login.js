@@ -1,19 +1,20 @@
 import React, { Component } from "react";
+import axios from 'axios'
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
-// import "./Login.css";
+import "./Login.css";
 
 export default class Login extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      email: "",
+      username: "",
       password: ""
     };
   }
 
   validateForm() {
-    return this.state.email.length > 0 && this.state.password.length > 0;
+    return this.state.username.length > 0 && this.state.password.length > 0;
   }
 
   handleChange = event => {
@@ -24,19 +25,32 @@ export default class Login extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    console.log(this.state)
+    axios.post('https://lambda-gigapet.herokuapp.com/api/auth/login', this.state)
+    .then(res=>{
+      console.log(res.data)
+      if(res.data.token){
+        this.props.auth()
+        localStorage.setItem('token', res.data.token )
+      }
+    })
+    .catch(e=>{
+      console.log('Error While Signing Up', e)
+    })
   }
 
   render() {
     return (
       <div className="Login">
         <form onSubmit={this.handleSubmit}>
-          <FormGroup controlId="email" bssize="large">
-            <FormLabel>Email</FormLabel>
+          <FormGroup controlId="username" bssize="large">
+            <FormLabel>Username</FormLabel>
             <FormControl
               autoFocus
-              type="email"
-              value={this.state.email}
+              type="username"
+              value={this.state.username}
               onChange={this.handleChange}
+              autoComplete='username'
             />
           </FormGroup>
           <FormGroup controlId="password" bssize="large">
@@ -45,6 +59,7 @@ export default class Login extends Component {
               value={this.state.password}
               onChange={this.handleChange}
               type="password"
+              autoComplete='current-password'
             />
           </FormGroup>
           <Button

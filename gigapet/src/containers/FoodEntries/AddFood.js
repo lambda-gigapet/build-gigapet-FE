@@ -26,7 +26,6 @@ export default class AddFood extends Component {
   }
 
   render () {
-    const { selectedOptions } = this.state
     return (
       <div className='add-food'>
         <div className='food-intake'>

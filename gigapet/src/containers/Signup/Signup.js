@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import {Route, Link } from 'react-router-dom'
-import Login from '../Login'
 import axios from 'axios'
 import { Button, FormGroup, FormControl, FormLabel } from 'react-bootstrap'
 import './Signup.css'

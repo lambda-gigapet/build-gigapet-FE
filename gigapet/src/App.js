@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
-import {Route, Link } from 'react-router-dom'
 import Signup from './containers/Signup/Signup'
 import Home from './containers/MainPage/Home'
-import AddFood from './containers/FoodEntries/AddFood';
-import RegisterChild from './containers/RegisterChild/RegisterChild';
-import AddInfo from './containers/InfoEntry/AddInfo';
 import Login from './containers/Login'
 import './App.css'
 
@@ -14,7 +10,7 @@ class App extends Component {
     this.state = {
       isAuth: false,
       registerOpen: false,
-      toggleLogin: false
+      toggleLogin: true
     }
   }
 

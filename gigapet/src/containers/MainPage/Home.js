@@ -1,11 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
+import AddInfo from '../InfoEntry/AddInfo'
 
-export default class Home extends Component {
-  render () {
-    return (
-      <div>
+const Home = (props) => {
+  return (
+    <div>
         welcome Home
-      </div>
-    )
-  }
+      <AddInfo registerStatus={props.registerStatus} />
+    </div>
+  )
 }
+
+export default Home

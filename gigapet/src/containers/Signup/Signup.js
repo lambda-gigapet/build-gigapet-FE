@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import {Route, Link } from 'react-router-dom'
+import Login from '../Login'
 import axios from 'axios'
 import { Button, FormGroup, FormControl, FormLabel } from 'react-bootstrap'
 import './Signup.css'
@@ -20,7 +22,7 @@ export default class Signup extends Component {
           console.log(res.data)
           if(res.data.token){
             this.props.auth()
-            localStorage.setItem('GPtoken', res.data.token )
+            localStorage.setItem('token', res.data.token )
           }
         })
         .catch(e=>{
@@ -39,7 +41,7 @@ export default class Signup extends Component {
     const {name, email, username, password} = this.state
     return (
       <div className='sign-up'>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className="sign-up-form">
           <FormGroup controlId='name' bissize='large'>
             <FormLabel>Name</FormLabel>
             <FormControl
@@ -52,7 +54,6 @@ export default class Signup extends Component {
           <FormGroup controlId='username' bissize='large'>
             <FormLabel>Username</FormLabel>
             <FormControl
-              autoFocus
               type='username'
               value={username}
               onChange={this.handleChange}
@@ -61,7 +62,6 @@ export default class Signup extends Component {
           <FormGroup controlId='email' bissize='large'>
             <FormLabel>Email</FormLabel>
             <FormControl
-              autoFocus
               type='email'
               value={email}
               onChange={this.handleChange}
@@ -84,6 +84,9 @@ export default class Signup extends Component {
             Sign Up
           </Button>
         </form>
+        <div className="go-to-login">
+        <p>Already Have An Account? <button onClick={()=>this.props.toggleLogin()}>Log In</button></p>
+        </div>
       </div>
     )
   }

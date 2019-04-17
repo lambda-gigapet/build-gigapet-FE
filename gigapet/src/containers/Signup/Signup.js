@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import Loader from 'react-loader-spinner'
+import {Route, Link} from 'react-router-dom'
 import { Button, FormGroup, FormControl, FormLabel } from 'react-bootstrap'
+import { connect } from 'react-redux'
+import {registerParent} from '../../ReduxState/actions/parentActions'
 import './Signup.css'
 
-export default class Signup extends Component {
+class Signup extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -15,18 +19,10 @@ export default class Signup extends Component {
     }
     handleSubmit = (e)=>{
       e.preventDefault()
-      axios.post('https://lambda-gigapet.herokuapp.com/api/auth/register', this.state)
-        .then(res=>{
-          console.log(res.data)
-          if(res.data.token){
-            this.props.auth()
-            localStorage.setItem('token', res.data.token )
-          }
-        })
-        .catch(e=>{
-          console.log('Error While Signing Up', e)
-        })
-
+      this.props.registerParent(this.state)
+        .then(()=>(
+          this.props.history.push('/home')
+          ))
     }
     handleChange = (e)=>{
       this.setState({[e.target.id]: e.target.value})
@@ -79,13 +75,25 @@ export default class Signup extends Component {
             disabled={!this.validateForm()}
             type='submit'
           >
-            Sign Up
+            {this.props.isSigningUp ? <Loader type='ThreeDots' color='#1f2a38' height='12' width='26' /> : 'Sign Up'}
           </Button>
         </form>
         <div className="go-to-login">
-        <p>Already Have An Account? <button onClick={()=>this.props.toggleLogin()}>Log In</button></p>
+        <p>Already Have An Account? <Route render={()=>(
+          <Link to='/login'>Log In</Link>
+        )} />
+
+           </p>
         </div>
       </div>
     )
   }
 }
+
+const mapStateToProps = (state)=>{
+  return {
+    isSigningUp: state.ParentReducer.isSigningUp
+  }
+}
+
+export default connect(mapStateToProps, {registerParent})(Signup)

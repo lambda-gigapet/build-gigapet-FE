@@ -1,0 +1,19 @@
+.register-child-container > form {
+  display: flex;
+  flex-direction: column;
+}
+.register-child-container > form > input,
+button {
+  font-size: 1.1rem;
+  margin: 10px;
+  /* display: inline-block; */
+}
+
+fieldset {
+  border: 0;
+}
+fieldset > input {
+  margin: 10px;
+  font-size: 1.1rem;
+  display: flex;
+}

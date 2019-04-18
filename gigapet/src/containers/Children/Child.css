@@ -1,0 +1,11 @@
+.child-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.add-info-container {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-evenly;
+}

@@ -1,4 +1,4 @@
 import { combineReducers } from 'redux'
 import ParentReducer from './ParentReducer'
-
-export default combineReducers({ ParentReducer })
+import ChildReducer from './ChildReducer'
+export default combineReducers({ ParentReducer, ChildReducer })

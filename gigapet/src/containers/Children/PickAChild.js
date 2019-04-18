@@ -1,10 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { Route, Link } from 'react-router-dom'
-import { connect } from 'react-redux'
 import Child from './Child'
-import PrivateRoute from '../PrivateRoute/PrivateRoute'
-import TrackFoodIntake from '../FoodEntries/TrackFoodIntake'
 import './PickAChild.css'
 
 class PickAChild extends Component {
@@ -21,16 +16,14 @@ class PickAChild extends Component {
             {this.props.parent.childArray.map((child, i) => {
               const path = `/child/${child.child_id}`
               return (
-                <div>
-
-                  <li key={i}
+                <div key={i} className='list-container'>
+                  <li
                     onClick={() => (
                       history.push(path)
-                      // this.props.history.push(path)
-                      // <Child child={child} />
-                      // <PrivateRoute path={path} child={child} component={Child} />
                     )}
                   >{child.child_name}</li>
+                  <img src={`${child.happy}`} />
+                  <p>Pet Name: {child.pet_name}</p>
                 </div>
               )
             })}

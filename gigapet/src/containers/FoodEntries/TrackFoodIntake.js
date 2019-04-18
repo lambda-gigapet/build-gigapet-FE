@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import {connect } from 'react-redux'
 import axiosWithHeaders from '../../utils/axiosAuth'
+import {AddFood, fetchFood} from '../../ReduxState/actions/childActions'
 
-export default class TrackFoodIntake extends Component {
+class TrackFoodIntake extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -19,15 +21,16 @@ export default class TrackFoodIntake extends Component {
   handleSubmit = ()=>{
     // e.preventDefault()
     const {id} = this.props.child
+    const newFood = {
+      ...this.state,
+      child_id: id,
+      date_added: new Date(Date.now()).toISOString(),
+      date_update: new Date(Date.now()).toISOString(),
+      quantity: parseInt(this.state.quantity, 10)
+    }
     // console.log('clicked',id)
-    axiosWithHeaders()
-      .post(`https://lambda-gigapet.herokuapp.com/api/child/${id}/entries`, this.state)
-        .then(res=>{
-          console.log('add food res',res.data)
-        })
-        .catch(e=>{
-          console.log('add food err',e)
-        })
+    this.props.AddFood(id, newFood)
+    this.props.fetchFood(id)
   }
   render () {
     const { name, category, meal, quantity } = this.state
@@ -42,7 +45,7 @@ export default class TrackFoodIntake extends Component {
             <input type='text' onChange={this.handleChange} value={name} name="name" placeholder='Name' />
             <input type='text' onChange={this.handleChange} value={meal} name="meal" placeholder='Meal' />
             <input type='text' onChange={this.handleChange} value={category} name="category" placeholder='Category' />
-            <input type='text' onChange={this.handleChange} value={quantity} name="quantity" placeholder='Quantity' />
+            <input type='number' onChange={this.handleChange} value={quantity} name="quantity" placeholder='Quantity' />
             <button>Feed Pet</button>
           </fieldset>
         </form>
@@ -50,3 +53,10 @@ export default class TrackFoodIntake extends Component {
     )
   }
 }
+
+const mapStateToProps = state => ({
+  isAddingFood: state.ChildReducer.isAddingFood,
+})
+
+
+export default connect(mapStateToProps, {AddFood, fetchFood})(TrackFoodIntake)

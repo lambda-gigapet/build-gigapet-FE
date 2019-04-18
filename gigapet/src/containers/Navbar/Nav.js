@@ -1,23 +1,22 @@
 import React, { Component } from 'react'
-import {Route, Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import classNames from "classnames";
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+// import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormGroup from '@material-ui/core/FormGroup';
+// import FormControlLabel from '@material-ui/core/FormControlLabel';
+// import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import ListItemText from '@material-ui/core/ListItemText';
 import MenuList from '@material-ui/core/MenuList';
-import Signup from '../Signup/Signup'
-import Home from '../MainPage/Home'
-import Login from '../Login'
+// import Signup from '../Signup/Signup'
+// import Home from '../MainPage/Home'
+// import Login from '../Login'
 
 const styles =(theme) => ({
   root: {
@@ -67,7 +66,6 @@ class Nav extends Component {
     const { auth, anchorEl } = this.state;
     const open = Boolean(anchorEl);
 
-    console.log(this.props)
     return (
       <div className='nav'>
               <AppBar position="static">
@@ -77,9 +75,9 @@ class Nav extends Component {
             </IconButton> */}
 
             <Typography variant="h6" color="inherit">
-            <Link to='/home'>
+            {/* <Link to='/home'> */}
               GigaPet
-            </Link>
+            {/* </Link> */}
             </Typography>
             {/* <Typography variant="h6" color="inherit" className={classes.grow}>
               Photos

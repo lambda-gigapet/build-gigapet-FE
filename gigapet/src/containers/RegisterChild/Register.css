@@ -1,3 +1,9 @@
+.register-child-container {
+  display: flex;
+  background: gray;
+  flex-direction: column;
+  justify-content: flex-start;
+}
 .register-child-container > form {
   display: flex;
   flex-direction: column;

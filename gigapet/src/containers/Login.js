@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import axios from 'axios'
+import { connect } from 'react-redux'
+import {Route, Link} from 'react-router-dom'
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
+import {loginParent} from '../ReduxState/actions/parentActions'
 import "./Login.css";
 
-export default class Login extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
 
@@ -25,18 +28,10 @@ export default class Login extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log(this.state)
-    axios.post('https://lambda-gigapet.herokuapp.com/api/auth/login', this.state)
-    .then(res=>{
-      console.log(res.data)
-      if(res.data.token){
-        this.props.auth()
-        localStorage.setItem('token', res.data.token )
-      }
-    })
-    .catch(e=>{
-      console.log('Error While Signing Up', e)
-    })
+    this.props.loginParent(this.state)
+      .then(()=>(
+        this.props.history.push('/home')
+      ))
   }
 
   render() {
@@ -73,9 +68,21 @@ export default class Login extends Component {
           </Button>
         </form>
         <div className="go-to-sign-up">
-        <p>Have No Account? <button onClick={()=>this.props.toggleLogin()}>Sign Up</button></p>
+        <p>Have No Account? <Route render={()=>(
+          <Link to='/signup'>Sign Up</Link>
+        )} />
+        </p>
+          {/* // <button onClick={()=>this.props.toggleLogin()}>Sign Up</button> */}
         </div>
       </div>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    isLogginIn: state.ParentReducer.isLogginIn
+  }
+}
+
+export default connect(mapStateToProps, {loginParent})(Login)

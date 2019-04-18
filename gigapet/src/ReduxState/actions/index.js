@@ -1,0 +1,8 @@
+export { REGISTER_PARENT,
+  REGISTER_PARENT_SUCCESS,
+  REGISTER_PARENT_FAILURE } from './parentActions'
+export {
+  LOGIN_PARENT,
+  LOGIN_PARENT_SUCCESS,
+  LOGIN_PARENT_FAILURE
+} from './parentActions'

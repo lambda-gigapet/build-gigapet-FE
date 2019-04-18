@@ -1,0 +1,15 @@
+.children-list {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.children-list > h5 {
+  margin: 10px;
+}
+
+.children-list > ul {
+  list-style-type: none;
+  padding: 0px;
+}

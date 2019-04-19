@@ -1,5 +1,7 @@
 # Gigapet-FE
 
+Link to the live website: https://gigapet.netlify.com/
+
 ### Help your child eat and Track the amount of food intake
 
 As your child eats so does his digital pet  

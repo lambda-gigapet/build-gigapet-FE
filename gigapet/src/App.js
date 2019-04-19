@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Route, Link} from 'react-router-dom'
+import {Route} from 'react-router-dom'
 import Signup from './containers/Signup/Signup'
 import Home from './containers/MainPage/Home'
 import Login from './containers/Login'
@@ -58,12 +58,3 @@ class App extends Component {
 
 
 export default App
-{/* {this.state.isAuth ? 
-  <>
-  <Navbar toggleRegister={this.toggleRegister} />
-  <Home registerStatus={this.state.registerOpen} />
-  </>
-  :
-  this.state.toggleLogin && <Login toggleLogin={this.toggleLogin}/> 
-}
-: <Signup auth={this.authenticateUser} toggleLogin={this.toggleLogin}/> */}

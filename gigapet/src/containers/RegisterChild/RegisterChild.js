@@ -8,8 +8,8 @@ const RegisterChild = (props) => {
       <form>
         <fieldset>
           <input type='text' placeholder='Name' />
-          <input type='text' placeholder='Age' />
           <input type='text' placeholder='Pet Name' />
+          <input type='text' placeholder='Age' />
           <button>Register</button>
         </fieldset>
       </form>

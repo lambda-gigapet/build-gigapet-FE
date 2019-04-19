@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import axios from 'axios'
 import { connect } from 'react-redux'
+import Loader from 'react-loader-spinner'
 import {Route, Link} from 'react-router-dom'
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import {loginParent} from '../ReduxState/actions/parentActions'
@@ -63,8 +63,7 @@ class Login extends Component {
             disabled={!this.validateForm()}
             type="submit"
           >
-
-            Login
+           {this.props.isLogginIn ? <Loader type='ThreeDots' color='#1f2a38' height='12' width='26' /> : 'Log In'}
           </Button>
         </form>
         <div className="go-to-sign-up">

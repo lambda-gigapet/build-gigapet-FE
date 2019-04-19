@@ -6,6 +6,7 @@ import Login from './containers/Login'
 import Nav from './containers/Navbar/Nav'
 import Child from './containers/Children/Child'
 import PrivateRoute from './containers/PrivateRoute/PrivateRoute'
+import FoodHistory from './containers/History/FoodHistory';
 import './App.css'
 
 class App extends Component {
@@ -35,13 +36,20 @@ class App extends Component {
   render () {
     return (
       <div className='App'>
-      <Nav toggleRegister={this.toggleRegister} />
+      <Route path='/' render={(props)=>(
+        <Nav {...props} />
+      )} />
       <PrivateRoute exact path='/home' component={Home} />
+      <Route exact path='/' component={Login} />
       <Route path='/signup' component={Signup} />
       <Route path='/login' component={Login} />
-      <Route path='/child/:id' render={(props)=>(
+      <Route exact path='/child/:id' render={(props)=>(
         <Child {...props} />
       )} />
+      <Route exact path='/child/:id/progress' render={(props)=>(
+        <FoodHistory {...props} />
+      )} />
+      
         
       {/* <Route path='/Pet' component={Pet} />
       <Route path='/InfoEntry/AddInfo' component={InfoEntry} />

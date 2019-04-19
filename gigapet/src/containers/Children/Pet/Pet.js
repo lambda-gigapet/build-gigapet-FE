@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './Pet.css'
 
 const Pet = (props) => {
@@ -15,11 +15,14 @@ const Pet = (props) => {
           : <TrackFoodIntake />
         } */}
         <h1>PET</h1>
+        <div>
+          <button onClick={
+            () => {
+              props.history.push(`/child/${child.id}/progress`)
+            }
+          }>Track Progress</button>
+        </div>
         <img src={`${child.eating}`} alt='' />
-        <img src={`${child.happy}`} alt='' />
-        <img src={`${child.ok}`} alt='' />
-        <img src={`${child.sad}`} alt='' />
-        <img src={`${child.sick}`} alt='' />
       </div>
     </div>
   )

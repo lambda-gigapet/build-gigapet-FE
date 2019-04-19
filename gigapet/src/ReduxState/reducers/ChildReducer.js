@@ -18,6 +18,7 @@ const initialState = {
   isFetching: false,
   isUpdating: false,
   isDeleting: false,
+  isAddingChild: false,
   quantity: 0
 }
 
@@ -42,12 +43,14 @@ export default (state = initialState, action) => {
     case ADD_FOOD:
       return {
         ...state,
-        isFetching: true
+        isFetching: true,
+        isAddingChild: true
       }
     case ADD_FOOD_SUCCESS:
       return {
         ...state,
         isFetching: false,
+        isAddingChild: false,
         foodEntries: action.payload
       }
     case ADD_FOOD_FAILURE:

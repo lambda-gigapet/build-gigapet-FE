@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import {connect } from 'react-redux'
-import axiosWithHeaders from '../../utils/axiosAuth'
 import {AddFood, fetchFood} from '../../ReduxState/actions/childActions'
 
 class TrackFoodIntake extends Component {

@@ -30,6 +30,24 @@ export class Child extends Component {
       })
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    const { params } = this.props.match
+    if (this.props.isAddingChild !== prevProps.isAddingChild) {
+      console.log('isAddingChild has changed!')
+      // what do you want to do here
+      if (!this.props.isFetchingParent ) {
+        console.log(`We're fetching data now`)
+        this.props.fetchFood(params.id)
+          .then(() => {
+            this.setState({ foodEntries: this.props.foodEntries})
+          })
+      }
+    }
+  }
+  
+
+
+
   getFoods = (id)=>{
     axiosWithHeaders()
       .get(`https://lambda-gigapet.herokuapp.com/api/child/${id}/entries`)
@@ -44,6 +62,7 @@ export class Child extends Component {
   render () {
     console.log('foodEntries prop: ', this.props.FoodEntries)
     const { child } = this.state
+    const {history} = this.props
     return (
       <div className="child-container">
       <h5>
@@ -54,7 +73,7 @@ export class Child extends Component {
         <FoodCategories child={child} foodEntries={this.props.foodEntries} />
       </div>
       <div className="pet-progress">
-        <Pet child={child} />
+        <Pet child={child} history={history}/>
       </div>
       </div>
     )
@@ -64,6 +83,7 @@ export class Child extends Component {
 const mapStateToProps = (state) => ({
   isFetching: state.ChildReducer.isFetching,
   foodEntries: state.ChildReducer.foodEntries,
+  isAddingChild: state.ChildReducer.isAddingChild
 })
 
 

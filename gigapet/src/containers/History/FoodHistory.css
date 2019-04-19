@@ -1,0 +1,9 @@
+.FoodHistoryContainer {
+  display: flex;
+  text-align: center;
+  border: solid, 1px;
+}
+
+.FoodHistory {
+  text-align: center;
+}

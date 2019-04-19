@@ -11,6 +11,7 @@ export const registerParent = (creds) => dispatch => {
     .then(res => {
       console.log('action-creator: ', res.data)
       localStorage.setItem('token', res.data.token)
+      localStorage.setItem('p_id', res.data.id)
       dispatch({ type: REGISTER_PARENT_SUCCESS, payload: res.data })
     })
     .catch(e => {
@@ -98,7 +99,7 @@ export const addChild = (id, child) => dispatch => {
 
   dispatch({ type: ADD_CHILD })
   return axiosWithHeaders()
-    .post(`https://lambda-gigapet.herokuapp.com/api/${id}/child`, child)
+    .post(`https://lambda-gigapet.herokuapp.com/api/parent/${id}/child`, child)
     .then(res => {
       console.log('add child res', res.data)
       dispatch({ type: ADD_CHILD_SUCCESS, payload: res.data })

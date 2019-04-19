@@ -16,6 +16,12 @@ export {
 } from './parentActions'
 
 export {
+  DELETE_CHILD,
+  DELETE_CHILD_SUCCESS,
+  DELETE_CHILD_FAILURE
+} from './parentActions'
+
+export {
   FETCH_FOOD,
   FETCH_FOOD_SUCCESS,
   FETCH_FOOD_FAILURE

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { fetchFood } from '../../ReduxState/actions/childActions'
 import moment from 'moment'
 import Select from 'react-select'
+import './FoodHistory.css'
 
 const options = [
     {value: 'By Day', label: 'By Day'},
@@ -89,7 +90,7 @@ class FoodHistory extends React.Component {
             //   return moment(food.date_update).format('YYYY MM') === moment().format('YYYY MM')
             }).map((food, i) => {
               return (
-                <div key={i}>
+                <div key={i} className='food-item'>
                   <h5>{food.category}</h5>
                   <li>{food.name}</li>
 

@@ -1,9 +1,22 @@
 .FoodHistoryContainer {
   display: flex;
+  flex-direction: column;
   text-align: center;
   border: solid, 1px;
 }
 
 .FoodHistory {
   text-align: center;
+}
+.FoodHistoryContainer > ul {
+  list-style-type: none;
+  border-radius: 10px;
+}
+.FoodHistoryContainer > ul > .food-item > li {
+  background: #2c9da6;
+  padding: 20px;
+  width: 300px;
+  margin: 0 auto;
+  border-radius: 10px;
+  color: white;
 }

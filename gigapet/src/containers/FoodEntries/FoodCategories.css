@@ -1,0 +1,9 @@
+.all-foods {
+  background: rgba(44, 157, 166, 0.4);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.all-foods > h5 {
+  margin: 0;
+}

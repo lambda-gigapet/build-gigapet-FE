@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Loader from 'react-loader-spinner'
+// import Loader from 'react-loader-spinner'
 import {Route, Link} from 'react-router-dom'
 import { Button, FormGroup, FormControl, FormLabel } from 'react-bootstrap'
 import { connect } from 'react-redux'
@@ -74,7 +74,7 @@ class Signup extends Component {
             disabled={!this.validateForm()}
             type='submit'
           >
-            {this.props.isSigningUp ? <Loader type='ThreeDots' color='#1f2a38' height='12' width='26' /> : 'Sign Up'}
+            Sign Up
           </Button>
         </form>
         <div className="go-to-login">

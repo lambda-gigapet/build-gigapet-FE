@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Child from './Child'
 import './PickAChild.css'
 
 class PickAChild extends Component {
@@ -11,26 +10,36 @@ class PickAChild extends Component {
         <h5>
               Choose a child
         </h5>
-        {this.props.parent.childArray.length > 1
-          ? <ul>
+        {this.props && this.props.parent.childArray.length > 0 &&
+          <ul>
             {this.props.parent.childArray.map((child, i) => {
               const path = `/child/${child.child_id}`
               return (
                 <div key={i} className='list-container'>
+                  <p
+                    onClick={
+                      () => {
+                        this.props.deleteChild(child.child_id)
+                      }
+                    }
+                  >X</p>
                   <li
                     onClick={() => (
                       history.push(path)
                     )}
                   >{child.child_name}</li>
-                  <img src={`${child.happy}`} />
+                  <img src={`${child.happy}`} alt='pet emoji' />
                   <p>Pet Name: {child.pet_name}</p>
                 </div>
               )
             })}
           </ul>
 
-          : <Child child={this.props.parent.childArray[0]} />
+          // : <Child child={this.props.parent.childArray[0]} />
         }
+        {this.props.parent.childArray.length === 0 && (
+          <p>No Children Available</p>
+        )}
 
       </div>
     )

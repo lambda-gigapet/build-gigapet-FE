@@ -9,7 +9,10 @@ import { REGISTER_PARENT,
   ADD_CHILD_FAILURE,
   FETCH_PARENT,
   FETCH_PARENT_SUCCESS,
-  FETCH_PARENT_FAILURE
+  FETCH_PARENT_FAILURE,
+  DELETE_CHILD,
+  DELETE_CHILD_SUCCESS,
+  DELETE_CHILD_FAILURE
 } from '../actions'
 
 const initialState = {
@@ -22,9 +25,11 @@ const initialState = {
   isSigningUp: false,
   isLogginIn: false,
   isAddingData: false,
-  isFethingData: false,
+  isFetchingData: false,
+  isFetchingParent: false,
   error: '',
-  isAddingChild: false
+  isAddingChild: false,
+  isDeleting: false
 }
 
 export default (state = initialState, action) => {
@@ -88,6 +93,21 @@ export default (state = initialState, action) => {
         parent: action.payload
       }
     case FETCH_PARENT_FAILURE:
+      return {
+        ...state,
+        error: action.payload
+      }
+    case DELETE_CHILD:
+      return {
+        ...state,
+        isDeleting: true
+      }
+    case DELETE_CHILD_SUCCESS:
+      return {
+        ...state,
+        isDeleting: false
+      }
+    case DELETE_CHILD_FAILURE:
       return {
         ...state,
         error: action.payload

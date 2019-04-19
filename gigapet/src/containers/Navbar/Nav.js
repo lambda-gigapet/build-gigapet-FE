@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Link} from 'react-router-dom'
+// import {Link} from 'react-router-dom'
 import classNames from "classnames";
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -12,7 +12,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 // import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import ListItemText from '@material-ui/core/ListItemText';
+// import ListItemText from '@material-ui/core/ListItemText';
 import MenuList from '@material-ui/core/MenuList';
 // import Signup from '../Signup/Signup'
 // import Home from '../MainPage/Home'
@@ -42,7 +42,7 @@ const styles =(theme) => ({
       justifyContent: 'center'
     },
     primary: {
-        color: 'white'
+    color: 'white'
   }
 });
 class Nav extends Component {
@@ -59,10 +59,17 @@ class Nav extends Component {
 
   handleClose = () => {
     this.setState({ anchorEl: null });
+    this.props.history.push('/home')
   };
-
+  
+  handleLogout = ()=>{
+    this.setState({ anchorEl: null });
+    localStorage.removeItem('token')
+    localStorage.removeItem('p_id')
+    this.props.history.push('/')
+  }
   render () {
-    const { classes, toggleRegister } = this.props;
+    const { classes } = this.props;
     const { auth, anchorEl } = this.state;
     const open = Boolean(anchorEl);
 
@@ -83,18 +90,14 @@ class Nav extends Component {
               Photos
             </Typography> */}
                   <MenuList className={classNames(classes.menuList, classes.root)} component='ul'>
-                    <MenuItem className={classes.menuItem}>
+                    {/* <MenuItem className={classes.menuItem}>
                     
-                    <ListItemText  onClick={()=> toggleRegister()} classes={{ primary: classes.primary }} inset primary="Register My Child" />
-                    </MenuItem>
-                    <MenuItem className={classes.menuItem}>
-
-                    <ListItemText classes={{ primary: classes.primary }} inset primary="Track Progress" />
+                    <ListItemText  onClick={()=> toggleRegister()} classes={{ primary: classes.primary }} inset primary="Home" />
                     </MenuItem>
                     <MenuItem className={classes.menuItem}>
                     
-                    <ListItemText classes={{ primary: classes.primary }} inset primary="Pet" />
-                    </MenuItem>
+                    <ListItemText classes={{ primary: classes.primary }} inset primary="Logout" />
+                    </MenuItem> */}
                 </MenuList>
             {auth && (
               <div>
@@ -120,8 +123,8 @@ class Nav extends Component {
                   open={open}
                   onClose={this.handleClose}
                 >
-                  <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                  <MenuItem onClick={this.handleClose}>My account</MenuItem>
+                  <MenuItem onClick={this.handleClose}>Home</MenuItem>
+                  <MenuItem onClick={this.handleLogout}>Logout</MenuItem>
                 </Menu>
               </div>
             )}

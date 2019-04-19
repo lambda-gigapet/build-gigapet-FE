@@ -1,6 +1,6 @@
 # Gigapet-FE
 
-this site is live at: https://gigapet.netlify.com/
+this site is live at: https://gigapet-jb.netlify.com/
 
 this site uses Material-UI, an open-source React library, under MIT license. In order to use the site,
 pleasse perform the console command given in the usage section.

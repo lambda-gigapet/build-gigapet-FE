@@ -13,3 +13,7 @@
   /* border: 0.1px solid; */
   padding: 20px;
 }
+
+.track-food > h5 {
+  margin: 0;
+}

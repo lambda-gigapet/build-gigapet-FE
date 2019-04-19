@@ -65,9 +65,9 @@ export class Child extends Component {
     const {history} = this.props
     return (
       <div className="child-container">
-      <h5>
+      <h3>
         {child ? child.name : ''}
-      </h5>
+      </h3>
         <div className='add-info-container'>
         <TrackFoodIntake child={child} />
         <FoodCategories child={child} foodEntries={this.props.foodEntries} />

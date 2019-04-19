@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import FoodCat from './FoodCat'
 import { DeleteFood, fetchFood, updateFoodQuantity } from '../../ReduxState/actions/childActions'
+import './FoodCategories.css'
 
 // import { increment, decrement } from '../actions'
 
@@ -20,8 +21,10 @@ class FoodCategories extends Component {
   }
   render () {
     return (
-      <div>
+      <div className="all-foods">
+      <h5>
           Food Categories
+      </h5>
         {this.props.foodEntries && this.props.foodEntries.length > 0 && this.props.foodEntries.map((food, i) => {
           return <FoodCat key={i} food={food} deleteFood={this.handleDelete} updateFood={this.updateFood}/>
         })}

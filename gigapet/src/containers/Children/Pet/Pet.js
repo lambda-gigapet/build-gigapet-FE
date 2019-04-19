@@ -15,8 +15,8 @@ const Pet = (props) => {
           : <TrackFoodIntake />
         } */}
         <h1>PET</h1>
-        <div>
-          <button onClick={
+        <div className='btn-container'>
+          <button className='pet-btn' onClick={
             () => {
               props.history.push(`/child/${child.id}/progress`)
             }

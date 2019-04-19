@@ -9,3 +9,7 @@
   flex-direction: row-reverse;
   justify-content: space-evenly;
 }
+.child-container > h3 {
+  /* border: 0.1px solid; */
+  padding: 20px;
+}

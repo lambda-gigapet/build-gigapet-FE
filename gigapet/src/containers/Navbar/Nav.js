@@ -17,8 +17,11 @@ import MenuList from '@material-ui/core/MenuList';
 // import Signup from '../Signup/Signup'
 // import Home from '../MainPage/Home'
 // import Login from '../Login'
+// import {theme} from '../Material-ui-theme'
 
-const styles =(theme) => ({
+
+
+const styles =(MuiTheme) => ({
   root: {
     flexGrow: 1,
   },
@@ -31,9 +34,9 @@ const styles =(theme) => ({
   },
   menuItem: {
     '&:focus': {
-      backgroundColor: theme.palette.primary.main,
+      backgroundColor: MuiTheme.palette.primary.main,
       '& $primary, & $icon': {
-        color: theme.palette.common.white,
+        color: MuiTheme.palette.common.white,
       },
     },
   },
@@ -43,8 +46,12 @@ const styles =(theme) => ({
     },
     primary: {
     color: 'white'
+  },
+  appBar: {
+    backgroundColor: '#9eb1cd'
   }
-});
+})
+
 class Nav extends Component {
   constructor(props){
     super(props)
@@ -75,7 +82,7 @@ class Nav extends Component {
 
     return (
       <div className='nav'>
-              <AppBar position="static">
+              <AppBar position="static" className={classes.appBar}>
           <Toolbar>
             {/* <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
               <MenuIcon />

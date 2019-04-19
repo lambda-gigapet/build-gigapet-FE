@@ -16,20 +16,25 @@ class PickAChild extends Component {
               const path = `/child/${child.child_id}`
               return (
                 <div key={i} className='list-container'>
-                  <p
-                    onClick={
-                      () => {
-                        this.props.deleteChild(child.child_id)
+                  <div className='deleteButton'>
+
+                    <p
+                      onClick={
+                        () => {
+                          this.props.deleteChild(child.child_id)
+                        }
                       }
-                    }
-                  >X</p>
+                    >X</p>
+                  </div>
                   <li
                     onClick={() => (
                       history.push(path)
                     )}
                   >{child.child_name}</li>
                   <img src={`${child.happy}`} alt='pet emoji' />
-                  <p>Pet Name: {child.pet_name}</p>
+                  <p className='petName'>Pet Name: <span>
+                    {child.pet_name}
+                  </span></p>
                 </div>
               )
             })}

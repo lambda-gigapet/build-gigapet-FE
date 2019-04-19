@@ -14,11 +14,11 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 // import ListItemText from '@material-ui/core/ListItemText';
 import MenuList from '@material-ui/core/MenuList';
+import axiosWithHeaders from '../../utils/axiosAuth';
 // import Signup from '../Signup/Signup'
 // import Home from '../MainPage/Home'
 // import Login from '../Login'
 // import {theme} from '../Material-ui-theme'
-
 
 
 const styles =(MuiTheme) => ({
@@ -73,7 +73,8 @@ class Nav extends Component {
     this.setState({ anchorEl: null });
     localStorage.removeItem('token')
     localStorage.removeItem('p_id')
-    this.props.history.push('/')
+    axiosWithHeaders()
+      .get('https://gigapet-jb.netlify.com/')
   }
   render () {
     const { classes } = this.props;

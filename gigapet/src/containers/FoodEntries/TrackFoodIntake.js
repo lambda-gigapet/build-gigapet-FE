@@ -34,7 +34,7 @@ class TrackFoodIntake extends Component {
   render () {
     const { name, category, meal, quantity } = this.state
     return (
-      <div>
+      <div className='track-food'>
         <h5>Track Food Intake</h5>
         <form onSubmit={(e)=>{
            e.preventDefault()

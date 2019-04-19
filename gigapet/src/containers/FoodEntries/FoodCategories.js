@@ -9,8 +9,9 @@ import './FoodCategories.css'
 class FoodCategories extends Component {
   handleDelete = (id)=>{
     const { id: childId } = this.props.child
-    this.props.DeleteFood(id)
-    this.props.fetchFood(childId)
+    this.props.DeleteFood(id).then(()=>{
+      this.props.fetchFood(childId)
+    })
   }
   
   updateFood = (id,quantity)=>{

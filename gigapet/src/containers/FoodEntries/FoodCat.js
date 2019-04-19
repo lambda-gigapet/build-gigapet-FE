@@ -8,11 +8,11 @@ class FoodCat extends Component {
       <div>
         <div className='food-cat-container'>
           <div className='delete'>
-            <p conClick={(e) => {
+            <p onClick={(e) => {
               e.preventDefault()
               deleteFood(food.id)
             }}>X</p>
-        </div>
+          </div>
           <h5>{food.category}</h5>
           <p>{food.name}</p>
           <p>{food.quantity}</p>

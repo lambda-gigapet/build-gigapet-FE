@@ -1,8 +1,12 @@
 .register-child-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  padding: 10px;
+}
+.register-child-container > h5 {
+  margin: 0px;
 }
 fieldset {
   width: 300px;

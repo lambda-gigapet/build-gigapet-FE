@@ -1,4 +1,8 @@
 .food-cat-container {
+  background: white;
+  margin: 30px auto;
+  padding: 10px;
+  border-radius: 10px;
 }
 .food-cat-container > button {
   border-radius: 10px;
@@ -8,9 +12,12 @@
   padding: 10px;
 }
 .food-cat-container > .delete {
-  background-color: red;
+  background-color: #0000001a;
   width: fit-content;
   margin-left: 120px;
   margin-top: -19px;
   cursor: pointer;
+  border-radius: 3px;
+  padding: 0px 5px;
+  color: red;
 }

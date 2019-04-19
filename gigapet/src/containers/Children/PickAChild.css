@@ -6,7 +6,7 @@
   align-items: center;
 }
 .children-list > h5 {
-  margin: 10px;
+  margin: 0px;
 }
 
 .children-list > ul {
@@ -16,6 +16,9 @@
   justify-content: center;
   flex-wrap: wrap;
   width: 500px;
+  margin: 0;
+  overflow-y: scroll;
+  height: 500px;
 }
 
 .list-container {
@@ -26,11 +29,19 @@
 }
 
 .list-container > .deleteButton {
-  background-color: red;
+  /* background-color: red;
+  width: fit-content;
+  margin-left: 120px;
+  margin-top: -19px; */
+  cursor: pointer;
+  background-color: #0000001a;
   width: fit-content;
   margin-left: 120px;
   margin-top: -19px;
   cursor: pointer;
+  border-radius: 3px;
+  padding: 0px 5px;
+  color: red;
 }
 .list-container > .petName > span {
   background: #3f51b5;
